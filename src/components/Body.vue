@@ -6,6 +6,7 @@
       rows="14"
       placeholder="Input LaTeX here"
       class="form-control"
+      v-model="inputString"
     ></textarea>
   </div>
 
@@ -28,9 +29,8 @@
 </template>
 
 <script>
-// const area = document.querySelector("textarea")
-// const output = document.getElementById("output")
 // const nonsense = "#*%@^";
+let inputString = "";
 let outputString = "sad";
 
 // area.addEventListener('input', () => {
@@ -59,6 +59,13 @@ export default {
   methods: {
     copyButtonClick,
   },
+  data: () => {
+    return {
+      
+    inputString,
+    outputString
+    }
+  }
 };
 </script>
 
