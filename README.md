@@ -7,3 +7,7 @@
 Converts LaTeX to [Moodle](https://moodle.org/) reorganizable text
 
 Based on [github.com/Zeyu-Li/latex-moodle-converter](https://github.com/Zeyu-Li/latex-moodle-converter) but ported to Vue.js
+
+## TODO:
+
+Moodle to LaTeX

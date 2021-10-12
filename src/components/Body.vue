@@ -1,4 +1,5 @@
 <template>
+<div>
   <div style="height: 50%; width: 100%; display: flex; justify-content: center">
     <textarea
       style="width: 100%; height: 50%; text-align: left"
@@ -22,6 +23,7 @@
       </button>
     </div>
     <code id="output">{{ outputString }}</code>
+  </div>
   </div>
 </template>
 
