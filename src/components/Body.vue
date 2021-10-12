@@ -1,0 +1,64 @@
+<template>
+  <div style="height: 50%; width: 100%; display: flex; justify-content: center">
+    <textarea
+      style="width: 100%; height: 50%; text-align: left"
+      rows="14"
+      placeholder="Input LaTeX here"
+      class="form-control"
+    ></textarea>
+  </div>
+
+  <div style="height: 50%" class="outputSection">
+    <hr />
+    <div style="display: flex; justify-content: space-between">
+      <p>Output Text:</p>
+      <button
+        type="button"
+        title="Copy output to clipboard"
+        class="btn btn-primary copyButton"
+        @click="copyButtonClick()"
+      >
+        Copy Output to Clipboard 📋
+      </button>
+    </div>
+    <code id="output">{{ outputString }}</code>
+  </div>
+</template>
+
+<script>
+// const area = document.querySelector("textarea")
+// const output = document.getElementById("output")
+// const nonsense = "#*%@^";
+let outputString = "sad";
+
+// area.addEventListener('input', () => {
+//     outputString = ""
+//     const newInput = area.value.replaceAll("\\$", nonsense)
+
+//     let start = true
+//     for (let i = 0; newInput && i < newInput.length; i++) {
+//         if (newInput[i] === "$") {
+//             outputString += start ? "\\(" : "\\)"
+//             start = !start
+//         } else {
+//             outputString += newInput[i]
+//         }
+//     }
+//     // convert nonsense back to regular dollar sign
+//     output.innerText = outputString.replaceAll(nonsense, "$")
+// }, false)
+
+const copyButtonClick = () => {
+  navigator.clipboard.writeText(outputString);
+};
+
+export default {
+  name: "Body",
+  methods: {
+    copyButtonClick,
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped></style>
