@@ -25,7 +25,7 @@ Vue.use(VueKatex, {
 });
 
 // title
-document.title = "LaTeX to Moodle Converter";
+document.title = "LaTeX to KaTeX Converter";
 
 export default {
   name: "main-component",
