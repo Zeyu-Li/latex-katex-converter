@@ -1,8 +1,6 @@
 <template>
   <main>
-    <h1 style="text-align: center; margin: 40px">
-      Convert LaTeX to Moodle styled LaTeX
-    </h1>
+    <h1 style="text-align: center; margin: 40px">Convert LaTeX to KaTeX</h1>
     <Body />
   </main>
 </template>
