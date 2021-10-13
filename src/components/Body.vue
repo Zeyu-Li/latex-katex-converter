@@ -1,33 +1,39 @@
 <template>
   <div>
-    <div
-      style="height: 50%; width: 100%; display: flex; justify-content: center"
-    >
-      <textarea
-        style="width: 100%; height: 50%; text-align: left"
-        rows="14"
-        placeholder="Input LaTeX here"
-        class="form-control"
-        v-model="inputString"
-        @input="changeTextInput()"
-      ></textarea>
-    </div>
-
-    <div style="height: 50%" class="outputSection">
-      <hr />
-      <div style="display: flex; justify-content: space-between">
-        <p>Output Text:</p>
-        <button
-          type="button"
-          title="Copy output to clipboard"
-          class="btn btn-primary copyButton"
-          @click="copyButtonClick()"
-        >
-          Copy Output to Clipboard 📋
-        </button>
+    <div>
+      <div
+        style="height: 50%; width: 100%; display: flex; justify-content: center"
+      >
+        <textarea
+          style="width: 100%; height: 50%; text-align: left"
+          rows="14"
+          placeholder="Input LaTeX here"
+          class="form-control"
+          v-model="inputString"
+          @input="changeTextInput()"
+        ></textarea>
       </div>
-      <code id="output">{{ outputString }}</code>
+
+      <div style="height: 50%" class="outputSection">
+        <hr />
+        <div style="display: flex; justify-content: space-between">
+          <p>Output Text:</p>
+          <b-button v-b-modal.modal-1>Preview LaTeX</b-button>
+          <button
+            type="button"
+            title="Copy output to clipboard"
+            class="btn btn-primary copyButton"
+            @click="copyButtonClick()"
+          >
+            Copy Output to Clipboard 📋
+          </button>
+        </div>
+        <code id="output">{{ outputString }}</code>
+      </div>
     </div>
+    <b-modal id="modal-1" title="Preview">
+      <div v-katex:auto>{{ outputString }}</div>
+    </b-modal>
   </div>
 </template>
 
