@@ -28,11 +28,15 @@
             Copy Output to Clipboard 📋
           </button>
         </div>
-        <code id="output" style="white-space: pre">{{ outputString }}</code>
+        <code id="output" style="white-space: break-spaces">{{
+          outputString
+        }}</code>
       </div>
     </div>
     <b-modal id="modal-1" title="Preview">
-      <div v-katex:auto style="white-space: pre">{{ outputString }}</div>
+      <div v-katex:auto style="white-space: break-spaces">
+        {{ outputString }}
+      </div>
     </b-modal>
   </div>
 </template>
