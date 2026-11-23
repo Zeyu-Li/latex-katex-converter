@@ -7,22 +7,11 @@
 
 <script>
 import Body from "./components/Body.vue";
-import Vue from "vue";
-import { BootstrapVue } from "bootstrap-vue";
 
-// Import Bootstrap an BootstrapVue CSS files (order is important)
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-Vue.use(BootstrapVue);
 
 // latex
-import VueKatex from "vue-katex";
 import "katex/dist/katex.min.css";
-Vue.use(VueKatex, {
-  globalOptions: {
-    //... Define globally applied KaTeX options here
-  },
-});
 
 // title
 document.title = "LaTeX to KaTeX Converter";

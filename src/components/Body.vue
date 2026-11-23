@@ -18,7 +18,14 @@
         <hr />
         <div style="display: flex; justify-content: space-between">
           <p>Output Text:</p>
-          <b-button v-b-modal.modal-1>Preview LaTeX</b-button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-1"
+          >
+            Preview LaTeX
+          </button>
           <button
             type="button"
             title="Copy output to clipboard"
@@ -33,15 +40,53 @@
         }}</code>
       </div>
     </div>
-    <b-modal id="modal-1" title="Preview">
-      <div v-katex:auto style="white-space: break-spaces">
-        {{ outputString }}
+    <div
+      id="modal-1"
+      class="modal fade"
+      tabindex="-1"
+      aria-labelledby="modal-1-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h5 id="modal-1-title" class="modal-title">Preview</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </header>
+          <div class="modal-body">
+            <div ref="preview" style="white-space: break-spaces"></div>
+          </div>
+          <footer class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </footer>
+        </div>
       </div>
-    </b-modal>
+    </div>
   </div>
 </template>
 
 <script>
+import "bootstrap/js/dist/modal";
+import renderMathInElement from "katex/contrib/auto-render";
+
 // let inputString = "";
 // let outputString = "";
 
@@ -53,7 +98,18 @@ export default {
       outputString: "",
     };
   },
+  watch: {
+    outputString() {
+      this.renderPreview();
+    },
+  },
   methods: {
+    renderPreview() {
+      // The output goes in as plain text; only KaTeX turns the math delimiters into markup.
+      const preview = this.$refs.preview;
+      preview.textContent = this.outputString;
+      renderMathInElement(preview);
+    },
     copyButtonClick() {
       navigator.clipboard.writeText(this.outputString);
     },
